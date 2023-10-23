@@ -6,18 +6,6 @@ using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class InputController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     [Header("Character Input Values")]
     public Vector2 move;
     public Vector2 look;
@@ -30,6 +18,8 @@ public class InputController : MonoBehaviour
     [Header("Mouse Cursor Settings")]
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
+
+    public bool destroyCude;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -52,6 +42,12 @@ public class InputController : MonoBehaviour
     public void OnSprint(InputAction.CallbackContext context)
     {
         SprintInput(context.ReadValueAsButton());
+    }
+
+    public void OnDestroyCude(InputAction.CallbackContext context)
+    {
+        Debug.Log("Destroy Cude");
+        destroyCude = context.ReadValueAsButton();
     }
 
     public void MoveInput(Vector2 newMoveDirection)
